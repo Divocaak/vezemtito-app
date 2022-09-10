@@ -24,7 +24,7 @@ class Authentication {
       User? autoUser = await loginUser(context, loggedViaGoogle);
       if (autoUser != null) {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => UserCheckPage(fbaUser: autoUser)));
+            builder: (context) => UserCheckPage(user: autoUser)));
       }
     }
 

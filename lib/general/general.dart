@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 // URGENT before build
@@ -21,6 +22,6 @@ class General {
     return id;
   }
 
-  /* static Future<String> getFCMTokenFromFirebase() async =>
-      await FirebaseMessaging.instance.getToken() ?? ""; */
+  static Future<String> getFCMTokenFromFirebase() async =>
+      await FirebaseMessaging.instance.getToken() ?? "";
 }

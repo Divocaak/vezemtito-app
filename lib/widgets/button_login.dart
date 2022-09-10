@@ -4,18 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vezemtitoapp/general/authentication.dart';
 import 'package:vezemtitoapp/pages/user_check_page.dart';
 
-class LoginButton extends StatefulWidget {
+class LoginButton extends StatelessWidget {
   const LoginButton({Key? key, required bool isGoogle})
       : _isGoogle = isGoogle,
         super(key: key);
 
   final bool? _isGoogle;
 
-  @override
-  LoginButtonState createState() => LoginButtonState();
-}
-
-class LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) => Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -26,12 +21,11 @@ class LoginButtonState extends State<LoginButton> {
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40)))),
           onPressed: () async {
-            User? user =
-                await Authentication.loginUser(context, widget._isGoogle!);
+            User? user = await Authentication.loginUser(context, _isGoogle!);
 
             if (user != null) {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => UserCheckPage(fbaUser: user)));
+                  builder: (context) => UserCheckPage(user: user)));
             }
           },
           child: Row(children: [
@@ -39,12 +33,12 @@ class LoginButtonState extends State<LoginButton> {
                 padding: const EdgeInsets.all(10),
                 height: 50,
                 width: 50,
-                child: Image.asset(widget._isGoogle!
+                child: Image.asset(_isGoogle!
                     ? "assets/google_logo.png"
                     : "assets/apple_logo.png")),
             Expanded(
                 child: AutoSizeText(
-                    'Přihlásit se přes ${widget._isGoogle! ? "Google" : "Apple"}',
+                    'Přihlásit se přes ${_isGoogle! ? "Google" : "Apple"}',
                     maxLines: 1,
                     minFontSize: 10,
                     style: const TextStyle(
