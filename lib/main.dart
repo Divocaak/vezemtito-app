@@ -1,34 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:vezemtitoapp/firebase_options.dart';
+import 'package:vezemtitoapp/pages/sign_in.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => runApp(const RentTrioApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class RentTrioApp extends StatelessWidget {
+  const RentTrioApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const MaterialApp(
-        title: 'Flutter Demo',
-        home: MyHomePage(),
-      );
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(title: const Text("widget.title")),
-      body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-            Text('You have pushed the button this many times:')
-          ])));
+  Widget build(BuildContext context) =>
+      const MaterialApp(title: 'VezemTi.to', home: SignLogin());
 }
