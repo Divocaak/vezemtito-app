@@ -41,6 +41,7 @@ class SignLogin extends StatelessWidget {
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+                                  const LoginButton(),
                                   const LoginButton(isGoogle: true),
                                   if (Platform.isIOS)
                                     const LoginButton(isGoogle: false)

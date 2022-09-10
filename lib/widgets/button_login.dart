@@ -5,7 +5,7 @@ import 'package:vezemtitoapp/general/authentication.dart';
 import 'package:vezemtitoapp/pages/user_check_page.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({Key? key, required bool isGoogle})
+  const LoginButton({Key? key, bool? isGoogle})
       : _isGoogle = isGoogle,
         super(key: key);
 
@@ -29,16 +29,19 @@ class LoginButton extends StatelessWidget {
             }
           },
           child: Row(children: [
-            Container(
-                padding: const EdgeInsets.all(10),
-                height: 50,
-                width: 50,
-                child: Image.asset(_isGoogle!
-                    ? "assets/google_logo.png"
-                    : "assets/apple_logo.png")),
+            if (_isGoogle != null)
+              Container(
+                  padding: const EdgeInsets.all(10),
+                  height: 50,
+                  width: 50,
+                  child: Image.asset(_isGoogle!
+                      ? "assets/google_logo.png"
+                      : "assets/apple_logo.png")),
             Expanded(
                 child: AutoSizeText(
-                    'Přihlásit se přes ${_isGoogle! ? "Google" : "Apple"}',
+                    _isGoogle != null
+                        ? 'Přihlásit se přes ${_isGoogle! ? "Google" : "Apple"}'
+                        : "Vstoupit anonymně",
                     maxLines: 1,
                     minFontSize: 10,
                     style: const TextStyle(
