@@ -25,7 +25,7 @@ class SignLogin extends StatelessWidget {
                         Expanded(
                             flex: 2,
                             child: Text("Přihlášení do aplikace",
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.center,  
                                 style: TextStyle(
                                     color: kWhite,
                                     height: 1.7,

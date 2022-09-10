@@ -3,11 +3,11 @@ import 'package:vezemtitoapp/general/general.dart';
 import 'package:vezemtitoapp/objects/my_user.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required MyUser user})
+  const HomePage({Key? key, MyUser? user})
       : _user = user,
         super(key: key);
 
-  final MyUser _user;
+  final MyUser? _user;
 
   @override
   HomePageState createState() => HomePageState();

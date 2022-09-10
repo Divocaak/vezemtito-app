@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vezemtitoapp/general/authentication.dart';
+import 'package:vezemtitoapp/pages/homepage.dart';
 import 'package:vezemtitoapp/pages/user_check_page.dart';
 
 class LoginButton extends StatelessWidget {
@@ -21,11 +22,16 @@ class LoginButton extends StatelessWidget {
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40)))),
           onPressed: () async {
-            User? user = await Authentication.loginUser(context, _isGoogle!);
+            if (_isGoogle != null) {
+              User? user = await Authentication.loginUser(context, _isGoogle!);
 
-            if (user != null) {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => UserCheckPage(user: user)));
+              if (user != null) {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => UserCheckPage(user: user)));
+              }
+            } else {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomePage()));
             }
           },
           child: Row(children: [
