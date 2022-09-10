@@ -11,15 +11,17 @@ Color kWhite = Colors.white70;
 Color kSecondary = const Color(0xffdb6e00);
 
 class General {
-  static Future<String?> getProfPic(User user) async {
-    String? id;
-    for (UserInfo element in user.providerData) {
-      if (element.providerId == "google.com") {
-        id = element.photoURL!;
-        break;
+  static Future<String?> getProfPic(User? user) async {
+    if (user != null) {
+      String? id;
+      for (UserInfo element in user.providerData) {
+        if (element.providerId == "google.com") {
+          id = element.photoURL!;
+          break;
+        }
       }
+      return id;
     }
-    return id;
   }
 
   static Future<String> getFCMTokenFromFirebase() async =>

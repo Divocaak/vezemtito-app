@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vezemtitoapp/general/authentication.dart';
-import 'package:vezemtitoapp/pages/homepage.dart';
+import 'package:vezemtitoapp/pages/home_page.dart';
 import 'package:vezemtitoapp/pages/user_check_page.dart';
 
 class LoginButton extends StatelessWidget {
@@ -30,8 +30,9 @@ class LoginButton extends StatelessWidget {
                     builder: (context) => UserCheckPage(user: user)));
               }
             } else {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomePage()));
+              // TODO mby push replacement
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             }
           },
           child: Row(children: [

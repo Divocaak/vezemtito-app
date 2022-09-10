@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vezemtitoapp/general/general.dart';
 import 'package:vezemtitoapp/objects/my_user.dart';
+import 'package:vezemtitoapp/pages/user_page.dart';
+import 'package:vezemtitoapp/widgets/profile_pic.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, MyUser? user})
@@ -17,7 +19,15 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-          backgroundColor: kPrimary, title: const Text("Domovská stránka")),
+          backgroundColor: kPrimary,
+          title: const Text("Domovská stránka"),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (builder) =>
+                        UserPage(user: widget._user?.fbaUser))),
+                child: ProfilePic(user: widget._user?.fbaUser))
+          ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () => print("action"),
           backgroundColor: kPrimary,

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vezemtitoapp/objects/my_user.dart';
-import 'package:vezemtitoapp/pages/homepage.dart';
+import 'package:vezemtitoapp/pages/home_page.dart';
 import 'package:vezemtitoapp/remote/user.dart';
 
 class UserCheckPage extends StatelessWidget {
